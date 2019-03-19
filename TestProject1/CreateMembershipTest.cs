@@ -1,0 +1,123 @@
+using System.Collections.Generic;
+using System.Linq;
+using jf_web.Application;
+using jf_web.Domain;
+using jf_web.UI;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+
+namespace TestProject1 {
+    [TestClass]
+    public class CreateMembershipTest {
+        private CreateMembershipController _controller;
+        private Mock<IMembershipRepo> _mock;
+        private CreateMembershipView _createMembershipView;
+
+        [TestInitialize]
+        public void Setup() {
+            _mock = new Mock<IMembershipRepo>();
+
+
+            _createMembershipView = new CreateMembershipView();
+            _controller = new CreateMembershipController(
+                new CreateMembershipInteractor(
+                    new CreateMembershipPresenter(
+                        _createMembershipView
+                    ),
+                    _mock.Object
+                )
+            );
+        }
+        [TestMethod]
+        public void SaveSingleEmployeeView() {
+            //arrange
+            var t = new CreateMembershipReq {
+                EmployeeMember = new EmployeeReq {
+                    Cpr = "2805922031",
+                    Name = "kmp",
+                    Address = "addr",
+                    Memberships = new List<string> {"JernbaneFritid"},
+                    PaymentMethod = "Salary"
+                },
+                Spouses = new List<MemberReq>()
+            };
+            // act
+            _controller.Perform(t);
+            var result = _createMembershipView.Result;
+            Assert.AreEqual("ok",result);
+        }
+        [TestMethod]
+        public void SaveSingleEmployee() {
+            //arrange
+            var t = new CreateMembershipReq {
+                EmployeeMember = new EmployeeReq {
+                    Cpr = "2805922031",
+                    Name = "kmp",
+                    Address = "addr",
+                    Memberships = new List<string> {"JernbaneFritid"},
+                    PaymentMethod = "Salary"
+                },
+                Spouses = new List<MemberReq>()
+            };
+            // act
+            _controller.Perform(t);
+
+            //assert
+            _mock.Verify(r => r.SaveMember(
+                It.Is<Employee>(m =>
+                    m.Cpr == "2805922031" &&
+                    m.Name == "kmp" &&
+                    m.Address == "addr" &&
+                    m.Memberships.Count == 1 &&
+                    m.Memberships.First().PaymentMethod != null &&
+                    m.Memberships.First().Member == m
+                )
+            ), Times.Once);
+        }
+
+        [TestMethod]
+        public void SaveEmployeeAndOneSpouse() {
+            //arrange
+            var t = new CreateMembershipReq {
+                EmployeeMember = new EmployeeReq {
+                    Cpr = "2805922031",
+                    Name = "kmp",
+                    Address = "addr",
+                    Memberships = new List<string> {"JernbaneFritid"},
+                    PaymentMethod = "Salary"
+                },
+                Spouses = new List<MemberReq>() {
+                    new MemberReq() {
+                        Cpr = "2805922032",
+                        Name = "kmp2",
+                        Memberships = new List<string> {"JernbaneFritid"},
+                        PaymentMethod = "Salary"
+                    }
+                }
+            };
+            // act
+            _controller.Perform(t);
+
+            //assert
+            _mock.Verify(r => r.SaveMember(
+                It.Is<Employee>(m =>
+                    m.Cpr == "2805922031" &&
+                    m.Name == "kmp" &&
+                    m.Address == "addr" &&
+                    m.Memberships.Count == 1 &&
+                    m.Memberships.First().PaymentMethod != null &&
+                    m.Memberships.First().Member == m
+                )
+            ), Times.Once);
+            _mock.Verify(r => r.SaveMember(
+                It.Is<Member>(m =>
+                    m.Cpr == "2805922032" &&
+                    m.Name == "kmp2" &&
+                    m.Memberships.Count == 1 &&
+                    m.Memberships.First().PaymentMethod != null &&
+                    m.Memberships.First().Member == m
+                )
+            ), Times.Once);
+        }
+    }
+}

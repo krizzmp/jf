@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jf-web", "jf-web\jf-web.csproj", "{5B3744E8-0AFA-4CE2-A83C-0836E113E500}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{24222708-D882-4A30-B844-D75E9468800D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B3744E8-0AFA-4CE2-A83C-0836E113E500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B3744E8-0AFA-4CE2-A83C-0836E113E500}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B3744E8-0AFA-4CE2-A83C-0836E113E500}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B3744E8-0AFA-4CE2-A83C-0836E113E500}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24222708-D882-4A30-B844-D75E9468800D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24222708-D882-4A30-B844-D75E9468800D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24222708-D882-4A30-B844-D75E9468800D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24222708-D882-4A30-B844-D75E9468800D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
