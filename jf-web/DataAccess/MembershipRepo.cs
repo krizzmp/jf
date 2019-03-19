@@ -25,5 +25,9 @@ namespace jf_web.DataAccess {
             _repo.SaveChanges();
             Console.WriteLine(member);
         }
+
+        public bool Exists(string s) {
+            return _repo.Members.Find(s) != null;
+        }
     }
 }

@@ -16,8 +16,6 @@ namespace TestProject1 {
         [TestInitialize]
         public void Setup() {
             _mock = new Mock<IMembershipRepo>();
-
-
             _createMembershipView = new CreateMembershipView();
             _controller = new CreateMembershipController(
                 new CreateMembershipInteractor(
@@ -28,6 +26,7 @@ namespace TestProject1 {
                 )
             );
         }
+
         [TestMethod]
         public void SaveSingleEmployeeView() {
             //arrange
@@ -44,8 +43,9 @@ namespace TestProject1 {
             // act
             _controller.Perform(t);
             var result = _createMembershipView.Result;
-            Assert.AreEqual("ok",result);
+            Assert.AreEqual("ok", result);
         }
+
         [TestMethod]
         public void SaveSingleEmployee() {
             //arrange
@@ -73,6 +73,24 @@ namespace TestProject1 {
                     m.Memberships.First().Member == m
                 )
             ), Times.Once);
+        }
+
+        [TestMethod]
+        public void CreateExistingEmployeeShouldFail() {
+            //arrange
+            var t = new CreateMembershipReq {
+                EmployeeMember = new EmployeeReq {
+                    Cpr = "0000000000",
+                    Name = "kmp",
+                    Address = "addr",
+                    Memberships = new List<string> {"JernbaneFritid"},
+                    PaymentMethod = "Salary"
+                },
+                Spouses = new List<MemberReq>()
+            };
+            _mock.Setup(r => r.Exists("0000000000")).Returns(true);
+            // act & assert
+            Assert.ThrowsException<MemberAlreadyExistsException>(() => { _controller.Perform(t); });
         }
 
         [TestMethod]

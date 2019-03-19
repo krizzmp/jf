@@ -4,11 +4,14 @@ using System.ComponentModel.DataAnnotations;
 namespace jf_web.Domain {
     public class Member {
         public Member(string cpr, string name) {
+            if (cpr.Length != 10) {
+                throw new InvalidCprException();
+            }
             Cpr = cpr;
             Name = name;
         }
 
-        public Member() {
+        protected Member() {
         }
 
         [Key] public string Cpr { get; private set; }

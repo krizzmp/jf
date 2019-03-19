@@ -5,5 +5,6 @@ namespace jf_web.Application {
         void Save(CreateMembershipReq value);
         void SaveMember(Member member);
         void SaveEmployee(Employee member);
+        bool Exists(string s);
     }
 }
