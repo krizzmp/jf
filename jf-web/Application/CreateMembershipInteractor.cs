@@ -1,3 +1,4 @@
+using jf_web.Core;
 using jf_web.Domain;
 
 namespace jf_web.Application {
@@ -11,8 +12,8 @@ namespace jf_web.Application {
         }
 
         public void Perform(CreateMembershipReq value) {
-            var primaryMember = CreatePrimaryMember(value.EmployeeMember);
-            _mRepo.SaveMember(primaryMember);
+            var employee = CreateMember(value.EmployeeMember);
+            _mRepo.SaveMember(employee);
 
             foreach (var spouse in value.Spouses) {
                 var m = CreateMember(spouse);
@@ -22,7 +23,7 @@ namespace jf_web.Application {
             _cmPresenter.Ok();
         }
 
-        private Member CreatePrimaryMember(EmployeeReq employeeMember) {
+        private Member CreateMember(MemberReq employeeMember) {
             if (_mRepo.Exists(employeeMember.Cpr)) {
                 throw new MemberAlreadyExistsException();
             }
@@ -37,16 +38,6 @@ namespace jf_web.Application {
                 EmployeeReq e => new Employee(e.Cpr, e.Name, e.Address),
                 MemberReq m => new Member(m.Cpr, m.Name)
                 };
-        }
-
-        private Member CreateMember(MemberReq employeeMember) {
-            if (_mRepo.Exists(employeeMember.Cpr)) {
-                throw new MemberAlreadyExistsException();
-            }
-
-            var member = new Member(employeeMember.Cpr, employeeMember.Name);
-            member.AddMembership(new PaymentMethod());
-            return member;
         }
     }
 }

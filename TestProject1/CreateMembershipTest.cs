@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using jf_web.Application;
+using jf_web.Core;
 using jf_web.Domain;
 using jf_web.UI;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

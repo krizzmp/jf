@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using jf_web.Application;
-using jf_web.Domain;
+using jf_web.Core;
 using jf_web.UI;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -38,7 +38,6 @@ namespace TestProject1 {
                 Spouses = new List<MemberReq>()
             };
             Assert.ThrowsException<InvalidCprException>(() => { _controller.Perform(t); });
-
         }
     }
 }
