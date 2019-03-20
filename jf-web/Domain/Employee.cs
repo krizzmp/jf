@@ -1,9 +1,19 @@
+using jf_web.Core;
+
 namespace jf_web.Domain {
     public class Employee : Member {
         public string Address { get; private set; }
+        public string Phone { get; private set; }
+        public string Company { get; private set; }
+        public string Email { get; private set; }
+        public bool Magazine { get; private set; }
 
-        public Employee(string cpr, string name, string address) : base(cpr, name) {
+        public Employee(string cpr, string name, string address, string phone, string company, string email, bool magazine) : base(cpr, name) {
             Address = address;
+            Phone = phone;
+            Company = company;
+            Email = email;
+            Magazine = magazine;
         }
 
         public Employee() {

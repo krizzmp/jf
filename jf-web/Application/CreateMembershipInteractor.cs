@@ -35,7 +35,7 @@ namespace jf_web.Application {
 
         private static Member MemberFactory(MemberReq memberReq) {
             return memberReq switch {
-                EmployeeReq e => new Employee(e.Cpr, e.Name, e.Address),
+                EmployeeReq e => new Employee(e.Cpr, e.Name, e.Address, e.Phone, e.Company, e.Email, e.Magazine),
                 MemberReq m => new Member(m.Cpr, m.Name)
                 };
         }
