@@ -32,7 +32,7 @@ namespace TestProject1 {
         public void SaveSingleEmployeeView() {
             //arrange
             var t = new CreateMembershipReq {
-                EmployeeMember = new EmployeeReq {
+                Member = new EmployeeReq {
                     Cpr = "2805922031",
                     Name = "kmp",
                     Address = "addr",
@@ -51,7 +51,7 @@ namespace TestProject1 {
         public void SaveSingleEmployee() {
             //arrange
             var t = new CreateMembershipReq {
-                EmployeeMember = new EmployeeReq {
+                Member = new EmployeeReq {
                     Cpr = "2805922031",
                     Name = "kmp",
                     Address = "addr",
@@ -80,7 +80,7 @@ namespace TestProject1 {
         public void CreateExistingEmployeeShouldFail() {
             //arrange
             var t = new CreateMembershipReq {
-                EmployeeMember = new EmployeeReq {
+                Member = new EmployeeReq {
                     Cpr = "0000000000",
                     Name = "kmp",
                     Address = "addr",
@@ -98,7 +98,7 @@ namespace TestProject1 {
         public void SaveEmployeeAndOneSpouse() {
             //arrange
             var t = new CreateMembershipReq {
-                EmployeeMember = new EmployeeReq {
+                Member = new EmployeeReq {
                     Cpr = "2805922031",
                     Name = "kmp",
                     Address = "addr",

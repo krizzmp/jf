@@ -28,7 +28,7 @@ namespace TestProject1 {
         [TestMethod]
         public void CprMustBeTenDigits() {
             var t = new CreateMembershipReq {
-                EmployeeMember = new EmployeeReq {
+                Member = new EmployeeReq {
                     Cpr = "1234",
                     Name = "kmp",
                     Address = "addr",

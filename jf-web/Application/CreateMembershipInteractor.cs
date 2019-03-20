@@ -12,7 +12,7 @@ namespace jf_web.Application {
         }
 
         public void Perform(CreateMembershipReq value) {
-            var employee = CreateMember(value.EmployeeMember);
+            var employee = CreateMember(value.Member);
             _mRepo.SaveMember(employee);
 
             foreach (var spouse in value.Spouses) {
