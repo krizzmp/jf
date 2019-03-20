@@ -22,25 +22,30 @@ namespace jf_web {
 
             services.AddScoped<CreateMembershipController>();
             services.AddScoped<CreateMembershipInteractor>();
-            services.AddScoped<CreateMembershipPresenter>();
+            services.AddScoped<ICreateMembershipPresenter,CreateMembershipPresenter>();
             services.AddScoped<CreateMembershipView>();
             services.AddScoped<IMembershipRepo, MembershipRepo>();
             services.AddDbContext<SchoolContext>(options =>
                 options.UseSqlite("Data Source=data.db"));
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
-            }
-            else {
+            } else {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseCors(builder => {
+                builder.AllowAnyMethod();
+                builder.AllowAnyOrigin();
+                builder.AllowAnyHeader();
+            });
             app.UseHttpsRedirection();
             app.UseMvc();
+            
         }
     }
 }
