@@ -1,5 +1,3 @@
-using jf_web.Core;
-
 namespace jf_web.Domain {
     public class Employee : Member {
         public string Address { get; private set; }

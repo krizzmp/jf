@@ -105,8 +105,8 @@ namespace TestProject1 {
                     Memberships = new List<string> {"JernbaneFritid"},
                     PaymentMethod = "Salary"
                 },
-                Spouses = new List<MemberReq>() {
-                    new MemberReq() {
+                Spouses = new List<MemberReq> {
+                    new MemberReq {
                         Cpr = "2805922032",
                         Name = "kmp2",
                         Memberships = new List<string> {"JernbaneFritid"},

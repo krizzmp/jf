@@ -7,6 +7,7 @@ namespace jf_web.DataAccess {
         }
 
         public DbSet<Member> Members { get; set; }
+        // ReSharper disable once UnusedMember.Global
         public DbSet<Employee> Employees { get; set; }
     }
 }
