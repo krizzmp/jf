@@ -25,5 +25,13 @@ namespace jf_web.DataAccess {
             Console.WriteLine(q);
             return _repo.Members.Where(m => m.Cpr.StartsWith(q) || m.Name.Contains(q)).ToList();
         }
+
+        public void UpdateMember(Member member) {
+            _repo.SaveChanges();
+        }
+
+        public Member GetMember(string cpr) {
+            return _repo.Members.Find(cpr);
+        }
     }
 }

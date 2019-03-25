@@ -6,5 +6,7 @@ namespace jf_web.Application.Interfaces {
         void SaveMember(Member member);
         bool Exists(string s);
         IEnumerable<Member> Search(string q);
+        void UpdateMember(Member member);
+        Member GetMember(string cpr);
     }
 }

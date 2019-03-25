@@ -1,6 +1,6 @@
 namespace jf_web.Domain {
     public class Employee : Member {
-        public string Address { get; private set; }
+        public string Address { get; set; }
         public string Phone { get; private set; }
         public string Company { get; private set; }
         public string Email { get; private set; }

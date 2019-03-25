@@ -1,4 +1,7 @@
-﻿using jf_web.Application;
+﻿using System;
+using jf_web.Application;
+using jf_web.Application.Interfaces;
+using jf_web.Domain;
 using jf_web.UI;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,12 +21,26 @@ namespace jf_web.Routes {
             return view.Result;
         }
 
+        [HttpPost("addTournamentPin/{cpr:string}")]
+        public string AddTournamentPin(
+            [FromRoute] string cpr, [FromBody] TournamentReq tournament, [FromServices] IMembershipRepo repo
+        ) {
+            var member = repo.GetMember(cpr);
+            member.TournamentPin = new TournamentPin(tournament.Date);
+            repo.UpdateMember(member);
+            return "ok";
+        }
+
         [HttpGet("search")]
-        public object Search([FromQuery] string q, [FromServices] SearchView view, [FromServices] SearchController searchController)
-        {
+        public object Search(
+            [FromQuery] string q, [FromServices] SearchView view, [FromServices] SearchController searchController
+        ) {
             searchController.Perform(q);
             return view.Result;
         }
+    }
 
+    public class TournamentReq {
+        public DateTime Date { get; set; }
     }
 }

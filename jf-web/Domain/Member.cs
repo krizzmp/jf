@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using jf_web.Core;
@@ -16,11 +17,20 @@ namespace jf_web.Domain {
         }
 
         [Key] public string Cpr { get; private set; }
-        public string Name { get; private set; }
+        public string Name { get; set; }
         public List<Membership> Memberships { get; } = new List<Membership>();
+        public TournamentPin? TournamentPin { get; set; }
 
         public void AddMembership(PaymentMethod paymentMethod) {
             Memberships.Add(new Membership(this, paymentMethod));
         }
+    }
+
+    public struct TournamentPin {
+        public TournamentPin(DateTime achieved) {
+            Achieved = achieved;
+        }
+
+        public DateTime Achieved { get; set; }
     }
 }
