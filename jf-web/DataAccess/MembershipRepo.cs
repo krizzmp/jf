@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using jf_web.Application.Interfaces;
 using jf_web.Domain;
 
@@ -19,9 +21,9 @@ namespace jf_web.DataAccess {
             return _repo.Members.Find(s) != null;
         }
 
-        public IEnumerable<Member> Search(string q)
-        {
-            throw new System.NotImplementedException();
+        public IEnumerable<Member> Search(string q) {
+            Console.WriteLine(q);
+            return _repo.Members.Where(m => m.Cpr.StartsWith(q) || m.Name.Contains(q)).ToList();
         }
     }
 }

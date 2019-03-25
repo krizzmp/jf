@@ -19,7 +19,7 @@ namespace jf_web.Routes {
         }
 
         [HttpGet("search")]
-        public string Search([FromQuery] string q, [FromServices] SearchView view, [FromServices] SearchController searchController)
+        public object Search([FromQuery] string q, [FromServices] SearchView view, [FromServices] SearchController searchController)
         {
             searchController.Perform(q);
             return view.Result;

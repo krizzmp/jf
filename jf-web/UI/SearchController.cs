@@ -1,6 +1,6 @@
-﻿using System;
+﻿using jf_web.Application;
 
-namespace jf_web.Routes
+namespace jf_web.UI
 {
     public class SearchController
     {

@@ -1,21 +1,19 @@
 ﻿using jf_web.Application.Interfaces;
-using jf_web.Domain;
-using System;
-using System.Collections.Generic;
 
-namespace jf_web.Routes
+namespace jf_web.Application
 {
     public class SearchInteractor
     {
         private readonly IMembershipRepo _repo;
+        private readonly ISearchPresenter _presenter;
 
-        public SearchInteractor(IMembershipRepo repo, ISearchPresenter presenter)
-        {
+        public SearchInteractor(IMembershipRepo repo, ISearchPresenter presenter) {
             _repo = repo;
+            _presenter = presenter;
         }
         internal void Perform(string q)
         {
-            IEnumerable<Member> members = _repo.Search(q);
+            var members = _repo.Search(q);
             _presenter.ReturnObj(members);
         }
     }

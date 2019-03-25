@@ -22,3 +22,8 @@ Content-Type: application/json
 }
 
 ###
+
+GET https://localhost:5001/search?q=000000000
+Accept: application/json
+
+###

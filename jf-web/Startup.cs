@@ -19,6 +19,10 @@ namespace jf_web {
             services.AddScoped<CreateMembershipInteractor>();
             services.AddScoped<ICreateMembershipPresenter, CreateMembershipPresenter>();
             services.AddScoped<CreateMembershipView>();
+            services.AddScoped<SearchController>();
+            services.AddScoped<SearchInteractor>();
+            services.AddScoped<ISearchPresenter, SearchPresenter>();
+            services.AddScoped<SearchView>();
             services.AddScoped<IMembershipRepo, MembershipRepo>();
             services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlite("Data Source=data.db"));

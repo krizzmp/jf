@@ -1,7 +1,7 @@
-﻿namespace jf_web.Routes
+﻿namespace jf_web.UI
 {
     public class SearchView
     {
-        public string Result { get; internal set; }
+        public object Result { get; internal set; }
     }
 }
