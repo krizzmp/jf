@@ -6,7 +6,9 @@ namespace jf_web.Domain {
         public string Email { get; private set; }
         public bool Magazine { get; private set; }
 
-        public Employee(string cpr, string name, string address, string phone, string company, string email, bool magazine) : base(cpr, name) {
+        public Employee(
+            string cpr, string name, string address, string phone, string company, string email, bool magazine
+        ) : base(cpr, name) {
             Address = address;
             Phone = phone;
             Company = company;
@@ -14,7 +16,7 @@ namespace jf_web.Domain {
             Magazine = magazine;
         }
 
-        public Employee() {
+        private protected Employee() {
         }
     }
 }

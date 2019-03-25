@@ -12,7 +12,7 @@ namespace jf_web.Domain {
             Name = name;
         }
 
-        protected Member() {
+        private protected Member() {
         }
 
         [Key] public string Cpr { get; private set; }

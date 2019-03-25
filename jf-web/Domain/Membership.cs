@@ -5,7 +5,7 @@ namespace jf_web.Domain {
             PaymentMethod = paymentMethod;
         }
 
-        public Membership() {
+        private protected Membership() {
         }
 
         public int Id { get; set; }
