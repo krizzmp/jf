@@ -2,21 +2,19 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using jf_web.DataAccess;
 
 namespace jf_web.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20190320211031_InitialCreate3")]
-    partial class InitialCreate3
+    partial class ApplicationContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854");
+                .HasAnnotation("ProductVersion", "3.0.0-preview3.19153.1");
 
             modelBuilder.Entity("jf_web.Domain.Member", b =>
                 {
@@ -28,7 +26,11 @@ namespace jf_web.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int?>("TournamentPinId");
+
                     b.HasKey("Cpr");
+
+                    b.HasIndex("TournamentPinId");
 
                     b.ToTable("Members");
 
@@ -63,6 +65,18 @@ namespace jf_web.Migrations
                     b.ToTable("PaymentMethod");
                 });
 
+            modelBuilder.Entity("jf_web.Domain.TournamentPin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Achieved");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TournamentPin");
+                });
+
             modelBuilder.Entity("jf_web.Domain.Employee", b =>
                 {
                     b.HasBaseType("jf_web.Domain.Member");
@@ -78,6 +92,13 @@ namespace jf_web.Migrations
                     b.Property<string>("Phone");
 
                     b.HasDiscriminator().HasValue("Employee");
+                });
+
+            modelBuilder.Entity("jf_web.Domain.Member", b =>
+                {
+                    b.HasOne("jf_web.Domain.TournamentPin", "TournamentPin")
+                        .WithMany()
+                        .HasForeignKey("TournamentPinId");
                 });
 
             modelBuilder.Entity("jf_web.Domain.Membership", b =>

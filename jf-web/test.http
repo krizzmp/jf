@@ -5,25 +5,37 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
-POST https://localhost:5001/api/Values
+POST https://localhost:5001/createMembers
 Content-Type: application/json
 
 {
-  "employeeMember": {
-    "cpr": "2805922031",
-    "name": "kmp",
-    "address": "addr",
-    "memberships": [
-      "JernbaneFritid"
-    ],
-    "paymentMethod": "Salary"
-  },
-  "spouses": []
+    "member": {
+        "cpr": "2805922031",
+        "name": "kmp",
+        "address": "addr",
+        "phone": "20372805",
+        "company": "abc",
+        "email": "krizzmp@gmail.com",
+        "memberships": [
+            "JernbaneFritid"
+        ],
+        "paymentMethod": "Salary"
+    },
+    "spouses": []
 }
 
 ###
 
 GET https://localhost:5001/search?q=000000000
 Accept: application/json
+
+###
+
+POST https://localhost:5001/addTournamentPin/2805922031
+Content-Type: application/json
+
+{
+    "Date": "2002-08-23"
+}
 
 ###

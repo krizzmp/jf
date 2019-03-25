@@ -26,11 +26,12 @@ namespace jf_web.Domain {
         }
     }
 
-    public struct TournamentPin {
+    public class TournamentPin {
         public TournamentPin(DateTime achieved) {
             Achieved = achieved;
         }
 
+        public int Id { get; set; }
         public DateTime Achieved { get; set; }
     }
 }
