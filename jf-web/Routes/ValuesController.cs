@@ -30,6 +30,15 @@ namespace jf_web.Routes {
             repo.UpdateMember(member);
             return "ok";
         }
+        [HttpPost("updateName/{cpr:string}")]
+        public string UpdateName(
+            [FromRoute] string cpr, [FromBody] NameReq nameReq, [FromServices] IMembershipRepo repo
+        ) {
+            var member = repo.GetMember(cpr);
+            member.Name = nameReq.Name;
+            repo.UpdateMember(member);
+            return "ok";
+        }
 
         [HttpGet("search")]
         public object Search(
@@ -38,6 +47,10 @@ namespace jf_web.Routes {
             searchController.Perform(q);
             return view.Result;
         }
+    }
+
+    public class NameReq {
+        public string Name { get; set; }
     }
 
     public class TournamentReq {
