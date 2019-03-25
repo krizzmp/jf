@@ -1,4 +1,4 @@
-using jf_web.Application;
+using jf_web.Application.Interfaces;
 
 namespace jf_web.UI {
     public class CreateMembershipPresenter : ICreateMembershipPresenter {

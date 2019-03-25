@@ -1,4 +1,4 @@
-using jf_web.Application;
+using jf_web.Application.Interfaces;
 using jf_web.Domain;
 
 namespace jf_web.DataAccess {

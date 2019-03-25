@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using jf_web.Application;
+using jf_web.Application.Interfaces;
 using jf_web.Core;
 using jf_web.UI;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
