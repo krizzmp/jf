@@ -13,9 +13,17 @@ namespace jf_web.Routes {
 
 
         [HttpPost("createMembers")]
-        public object Post([FromBody] CreateMembershipReq value, [FromServices] CreateMembershipView view) {
+        public string Post([FromBody] CreateMembershipReq value, [FromServices] CreateMembershipView view) {
             _cmController.Perform(value);
             return view.Result;
         }
+
+        [HttpGet("search")]
+        public string Search([FromQuery] string q, [FromServices] SearchView view, [FromServices] SearchController searchController)
+        {
+            searchController.Perform(q);
+            return view.Result;
+        }
+
     }
 }

@@ -1,11 +1,12 @@
+using System.Collections.Generic;
 using jf_web.Application.Interfaces;
 using jf_web.Domain;
 
 namespace jf_web.DataAccess {
     public class MembershipRepo : IMembershipRepo {
-        private readonly SchoolContext _repo;
+        private readonly ApplicationContext _repo;
 
-        public MembershipRepo(SchoolContext repo) {
+        public MembershipRepo(ApplicationContext repo) {
             _repo = repo;
         }
 
@@ -16,6 +17,11 @@ namespace jf_web.DataAccess {
 
         public bool Exists(string s) {
             return _repo.Members.Find(s) != null;
+        }
+
+        public IEnumerable<Member> Search(string q)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

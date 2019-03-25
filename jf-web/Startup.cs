@@ -20,7 +20,7 @@ namespace jf_web {
             services.AddScoped<ICreateMembershipPresenter, CreateMembershipPresenter>();
             services.AddScoped<CreateMembershipView>();
             services.AddScoped<IMembershipRepo, MembershipRepo>();
-            services.AddDbContext<SchoolContext>(options =>
+            services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlite("Data Source=data.db"));
             services.AddCors();
         }

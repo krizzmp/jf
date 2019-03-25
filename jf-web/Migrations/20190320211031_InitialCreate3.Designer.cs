@@ -8,7 +8,7 @@ using jf_web.DataAccess;
 
 namespace jf_web.Migrations
 {
-    [DbContext(typeof(SchoolContext))]
+    [DbContext(typeof(ApplicationContext))]
     [Migration("20190320211031_InitialCreate3")]
     partial class InitialCreate3
     {

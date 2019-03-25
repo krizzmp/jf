@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace jf_web.Migrations
 {
-    [DbContext(typeof(SchoolContext))]
+    [DbContext(typeof(ApplicationContext))]
     [Migration("20190317114049_InitialCreate2")]
     partial class InitialCreate2
     {

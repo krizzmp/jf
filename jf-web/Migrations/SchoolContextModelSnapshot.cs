@@ -7,7 +7,7 @@ using jf_web.DataAccess;
 
 namespace jf_web.Migrations
 {
-    [DbContext(typeof(SchoolContext))]
+    [DbContext(typeof(ApplicationContext))]
     partial class SchoolContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
