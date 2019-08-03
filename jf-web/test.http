@@ -10,8 +10,8 @@ Content-Type: application/json
 
 {
     "member": {
-        "cpr": "2805922031",
-        "name": "kmp",
+        "cpr": "2805922032",
+        "name": "kmp3",
         "address": "addr",
         "phone": "20372805",
         "company": "abc",
